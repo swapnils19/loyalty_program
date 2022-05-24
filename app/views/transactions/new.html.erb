@@ -1,0 +1,20 @@
+<h1>Hello <% @user.name.capitalize %> </h1>
+<h3>Please add your Transaction here</h3>
+
+<% if flash.key? :errors %>
+<div class="error_explanation">
+  <h4><%= pluralize(flash[:errors].count, "error") %> prevented this record from being saved:</h4>
+  <ul>
+  <% flash[:errors].each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_with model: [@user, @transaction] do |form| %>
+  <%= form.label :amount, 'Amount' %>
+  <%= form.number_field :amount, required: true %>
+  <br/>
+  <%= form.submit 'Add', disable_with: 'Submiting...' %>
+<% end %>
