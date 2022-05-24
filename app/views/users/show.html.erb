@@ -1,0 +1,9 @@
+<h2>Welcome <%= @user.name %></h2>
+<br/>
+<%= link_to "Logout", auth_login_path %>
+<br/>
+<p>
+  Your Loyalty Level is <b><%= @user.tier.capitalize %></b>
+  <br/>
+  Please make some transaction to increase your Loyalty Level!
+</p>
