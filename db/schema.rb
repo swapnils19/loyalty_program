@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_23_022125) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_23_021722) do
   create_table "loyalty_points", force: :cascade do |t|
     t.integer "points"
     t.datetime "expiry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "users_id"
-    t.index ["users_id"], name: "index_loyalty_points_on_users_id"
+    t.integer "user_id"
+    t.integer "transaction_id"
+    t.index ["transaction_id"], name: "index_loyalty_points_on_transaction_id"
+    t.index ["user_id"], name: "index_loyalty_points_on_user_id"
   end
 
   create_table "loyalty_rewards", force: :cascade do |t|
@@ -46,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_23_022125) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "loyalty_points", "users", column: "users_id"
+  add_foreign_key "loyalty_points", "transactions"
+  add_foreign_key "loyalty_points", "users"
   add_foreign_key "transactions", "users"
 end

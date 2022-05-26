@@ -17,4 +17,5 @@
   <%= form.number_field :amount, required: true %>
   <br/>
   <%= form.submit 'Add', disable_with: 'Submiting...' %>
+  <%= link_to 'Cancel', user_path(@user) %>
 <% end %>

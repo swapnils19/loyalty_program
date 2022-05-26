@@ -2,7 +2,9 @@ class TransactionsController < ApplicationController
   before_action :set_user
 
   def index
-    @transactions = @user.transactions.order(updated_at: :desc)
+    @transactions = @user.transactions
+                         .preload(:loyalty_point)
+                         .order(updated_at: :desc)
   end
 
   def create

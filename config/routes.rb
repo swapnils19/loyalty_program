@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :create, :new, :show] do
     get 'login', on: :collection
-    resource :loyalties, only: [:index, :create, :new, :edit]
-    resource :transactions, only: [:index, :create, :new]
+    resources :loyalties, only: [:index, :create, :new, :edit]
+    resources :transactions, only: [:index, :create, :new]
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

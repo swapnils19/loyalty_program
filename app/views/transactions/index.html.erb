@@ -1,2 +1,15 @@
-<h1>Transactions#index</h1>
-<p>Find me in app/views/transactions/index.html.erb</p>
+<h2>Showing Transactions for <%= link_to @user.name, user_path(@user) %></h2>
+<br/>
+<h3>Transaction List</h3>
+<table>
+  <tr>
+    <th>Amount</th>
+    <th>Expiry</th>
+  </tr>
+  <% @transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.amount %></td>
+      <td><%= transaction.loyalty_point&.points || 'Lifetime' %></td>
+  </tr>
+  <% end %>
+</table>

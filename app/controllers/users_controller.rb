@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @total_loyalty_points = @user.loyalty_points&.sum(:points)
   end
 
   private
