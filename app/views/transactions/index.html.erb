@@ -1,5 +1,6 @@
 <h2>Showing Transactions for <%= link_to @user.name, user_path(@user) %></h2>
 <br/>
+<%= link_to 'Add Transaction', new_user_transaction_path(@user) %>
 <h3>Transaction List</h3>
 <table>
   <tr>

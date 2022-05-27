@@ -1,0 +1,32 @@
+- Models
+Users
+  - name
+  - id
+  - tier
+  - loyalty_rewards
+LoyaltyPoints
+  - id
+  - user_id
+  - points
+  - expiry
+  - transaction
+LoyaltyRewards
+  - id
+  - user_id
+  - reward
+Transactions
+  - id
+  - user_id
+  - amount
+
+- Controllers
+Users
+  - index
+  - create
+  - new
+  - show
+Loyalty
+  - index
+  - create
+  - new
+  - edit
