@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_23_021722) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_27_204056) do
   create_table "loyalty_points", force: :cascade do |t|
     t.integer "points"
     t.datetime "expiry"
@@ -26,6 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_23_021722) do
     t.string "reward"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "summery", default: 0
   end
 
   create_table "loyalty_rewards_users", id: false, force: :cascade do |t|

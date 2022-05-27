@@ -1,0 +1,3 @@
+give_loyalty_rewards:
+  cron: "1 * 1 * *"
+  class: "GiveLoyaltyRewardsJob"
