@@ -16,13 +16,13 @@ class User < ApplicationRecord
   def update_loyalty_tier
     total_points = loyalty_points&.sum(:points)
 
-    case
-    when total_points >= 1000
-      self.tier = :gold
-    when total_points >= 5000
-      self.tier = :platinum
-    else
+    case total_points
+    when 0..999
       self.tier = :standard
+    when 1000..4999
+      self.tier = :gold
+    else
+      self.tier = :platinum
     end
   end
 end
