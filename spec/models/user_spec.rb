@@ -1,21 +1,30 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
-  context "assign loyalty" do
-    it "update loyalty tier" do
+  context 'assign loyalty' do
+    def create_user_with_transactions(amount = 0)
       user = User.create
-      expect(user.tier).to eq(User.tiers.key(0))
-
-      user.transactions.create(amount: 100)
+      user.transactions.create(amount: amount) if amount > 0
       user.reload
-      expect(user.tier).to eq(User.tiers.key(0))
+    end
 
-      user.transactions.create(amount: 10000)
-      user.reload
+    it "doesn't update default loyalty tier" do
+      user = create_user_with_transactions
+      expect(user.tier).to eq(User.tiers.key(0))
+    end
+
+    it "doesn't update default loyalty tier for insufficient points" do
+      user = create_user_with_transactions(100)
+      expect(user.tier).to eq(User.tiers.key(0))
+    end
+
+    it 'updates loyalty tier to Gold' do
+      user = create_user_with_transactions(10000)
       expect(user.tier).to eq(User.tiers.key(1))
+    end
 
-      user.transactions.create(amount: 50000)
-      user.reload
+    it 'updates loyalty tier to Platinum' do
+      user = create_user_with_transactions(50000)
       expect(user.tier).to eq(User.tiers.key(2))
     end
   end
