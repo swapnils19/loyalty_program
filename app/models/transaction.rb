@@ -11,8 +11,7 @@ class Transaction < ApplicationRecord
   def evaluate_loyalty_points
     return if amount < 100
 
-    # TODO verify points_multiplier with multiple cases
-    points_multiplier = (amount / 100).round
+    points_multiplier = (amount / 100).floor
     create_loyalty_point(points: points_multiplier * 10, user_id: user.id)
   end
 end
