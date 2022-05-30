@@ -2,7 +2,6 @@ class GiveLoyaltyRewardsJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-
     users = User.select(:id, 'SUM(loyalty_points.points) AS points')
                 .joins(:loyalty_points)
                 .where('points > 100')

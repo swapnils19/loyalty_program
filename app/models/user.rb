@@ -3,6 +3,8 @@ class User < ApplicationRecord
   has_many :loyalty_points, dependent: :destroy
   has_and_belongs_to_many :loyalty_rewards, dependent: :destroy
 
+  validates :name, presence: true
+
   enum :tier, [:standard, :gold, :platinum]
 
   before_save :update_loyalty_tier
