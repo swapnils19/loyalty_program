@@ -4,8 +4,10 @@
 <br/>
 <p>
   Your Loyalty Level is <b><%= @user.tier.capitalize %></b>
-  <br/>
-  Congratulations!! You're rewarded with <b><%= @loyalty_rewards.first.reward %></b>
+  <% if @loyalty_rewards.present? %>
+    <br/>
+    Congratulations!! You're rewarded with <b><%= @loyalty_rewards.first.reward %></b>
+  <% end %>
   <br/>
   Please make some <%= link_to 'transaction', new_user_transaction_path(@user) %> to increase your Loyalty Level!
   <br/>

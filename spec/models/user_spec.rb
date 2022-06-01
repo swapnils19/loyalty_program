@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe User, type: :model do
   context 'assign loyalty' do
     def create_user_with_transactions(amount = 0)
-      user = User.create
+      user = User.create!(name: 'Test user')
       user.transactions.create(amount: amount) if amount > 0
       user.reload
     end

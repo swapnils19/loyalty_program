@@ -5,12 +5,12 @@
 <table>
   <tr>
     <th>Amount</th>
-    <th>Expiry</th>
+    <th>Loyalty Points</th>
   </tr>
   <% @transactions.each do |transaction| %>
     <tr>
       <td><%= transaction.amount %></td>
-      <td><%= transaction.loyalty_point&.points || 'Lifetime' %></td>
+      <td><%= transaction.loyalty_point&.points || '-' %></td>
   </tr>
   <% end %>
 </table>

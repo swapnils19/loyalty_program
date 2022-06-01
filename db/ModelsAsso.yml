@@ -12,7 +12,7 @@ LoyaltyPoints
   - transaction
 LoyaltyRewards
   - id
-  - user_id
+  - users
   - reward
 Transactions
   - id
